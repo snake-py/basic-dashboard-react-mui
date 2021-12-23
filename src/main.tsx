@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 import { loadApp } from './loadApp';
 import CssBaseline from '@mui/material/CssBaseline';
+import CircularProgress from '@mui/material/CircularProgress';
 
 loadApp();
 console.log('store: ', store.getState());
@@ -21,7 +22,9 @@ ReactDOM.render(
             <App />
           </>
         ) : (
-          <div>Loading...</div>
+          <div className="loader">
+            <CircularProgress/>
+          </div>
         )}
       </Provider>
     </BrowserRouter>
