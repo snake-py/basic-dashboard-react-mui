@@ -1,7 +1,5 @@
 import { createTheme } from '@mui/material/styles';
-// import variables from './static/scss/base/_variables.module.scss';
-import { yellow, teal, blue, indigo, grey} from '@mui/material/colors';
-
+import { yellow, teal, blue, indigo, grey } from '@mui/material/colors';
 
 export const darkTheme = createTheme({
   palette: {
@@ -9,17 +7,16 @@ export const darkTheme = createTheme({
     primary: yellow,
     secondary: teal,
     background: {
-      default: "#222222"
+      default: '#222222',
     },
     text: {
-      primary: "#ffffff",
-      secondary: "#000000"
+      primary: '#ffffff',
+      secondary: '#000000',
     },
     divider: {
-      primary: "#ffffff",
-      secondary: "#000000"
+      primary: '#ffffff',
+      secondary: '#000000',
     },
-
   },
 });
 
@@ -29,16 +26,15 @@ export const lightTheme = createTheme({
     primary: blue,
     secondary: indigo,
     background: {
-      default: "#e4f0e2"
+      default: '#e4f0e2',
     },
     text: {
-      primary: "#000000",
-      secondary: "#ffffff"
+      primary: '#000000',
+      secondary: '#ffffff',
     },
     divider: {
-      primary: "#000000",
-      secondary: "#ffffff"
+      primary: '#000000',
+      secondary: '#ffffff',
     },
-
   },
 });
