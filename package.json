@@ -1,10 +1,13 @@
 {
-  "name": "nlpgcfrontend",
+  "name": "basic-dashboard-react-mui",
   "version": "0.0.0",
+  "homepage": "http://snake-py.github.io/basic-dashboard-react-mui",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "tsc && vite build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
