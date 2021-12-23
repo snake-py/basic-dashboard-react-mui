@@ -1,65 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-
-export default function ChooseData({ width = 300, height = 400, data = [10, 30, 40, 20] }) {
-  const ref = useRef();
-
-  useEffect(() => {
-    //@ts-ignore
-    const svg = d3
-      //@ts-ignore
-      .select(ref.current)
-      //@ts-ignore
-      .attr('width', width)
-      //@ts-ignore
-      .attr('height', height)
-      .style('border', '1px solid black');
-  }, []);
-
-  useEffect(() => {
-    draw();
-  }, [data]);
-
-  const draw = () => {
-    //@ts-ignore
-    const svg = d3.select(ref.current);
-    var selection = svg.selectAll('rect').data(data);
-    var yScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(data)])
-      .range([0, height - 100]);
-
-    selection
-      .transition()
-      .duration(300)
-      .attr('height', (d) => yScale(d))
-      .attr('y', (d) => height - yScale(d));
-
-    selection
-      .enter()
-      .append('rect')
-      .attr('x', (d, i) => i * 45)
-      .attr('y', (d) => height)
-      .attr('width', 40)
-      .attr('height', 0)
-      .attr('fill', 'orange')
-      .transition()
-      .duration(300)
-      .attr('height', (d) => yScale(d))
-      .attr('y', (d) => height - yScale(d));
-
-    selection
-      .exit()
-      .transition()
-      .duration(300)
-      .attr('y', (d) => height)
-      .attr('height', 0)
-      .remove();
-  };
-
+import Plot from 'react-plotly.js';
+// https://plotly.com/javascript/reference/#layout
+// https://github.com/plotly/react-plotly.js/blob/master/README.md
+export default function ChooseData() {
   return (
-    <div className="chart">
-      <svg ref={ref}></svg>
+    <div className='alignCenter w-100'>
+    
+      <Plot
+        data={[{ type: 'bar', x: [1, 2, 3, 4, 5, 6, 7, 8], y: [2, 5, 3, 1, 7, 6, 10, 4] }]}
+
+        layout={{
+          width: 1100,
+          height: 500,
+          title: 'A Fancy Plot',
+          plot_bgcolor: '#222222',
+          paper_bgcolor: '#222222',
+          font: {
+            color: '#ffffff'
+          },
+        }}
+          showLegend={false}
+      />
     </div>
   );
 }
