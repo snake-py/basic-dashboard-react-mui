@@ -1,7 +1,9 @@
 @import './base/variables.module.scss';
+@import './base/main.scss';
 
 @import './overwrites/mui';
 
 
 @import './components/sideNavigation';
 @import './components/loader';
+@import './components/stepper';

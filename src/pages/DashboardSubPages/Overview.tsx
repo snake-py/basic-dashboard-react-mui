@@ -1,11 +1,10 @@
 import React from 'react'
 
+
 export default function Overview() {
     return (
-        <div>
-            Overview 
-
-            // SOme plots etc. 
+        <div  className='main-container'>
+            Overview
         </div>
     )
 }
