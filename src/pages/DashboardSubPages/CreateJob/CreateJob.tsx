@@ -1,13 +1,12 @@
 import React from 'react';
-import HorizontalStepper from '../../../components/stepper/HorizontalStepper';
-import { useDispatch, useSelector } from 'react-redux';
+import HorizontalStepper from '@components/stepper/HorizontalStepper';
+import { useDispatch, useSelector } from '@redux/hooks';
 import ChooseData from './ChooseData';
 import ChooseDateRange from './ChooseDateRange';
 import SummaryJob from './SummaryJob';
 
 export default function CreateJob() {
   const dispatch = useDispatch();
-  //@ts-ignore
   const job = useSelector((state) => state.job);
   return (
     <div className="main-container">
