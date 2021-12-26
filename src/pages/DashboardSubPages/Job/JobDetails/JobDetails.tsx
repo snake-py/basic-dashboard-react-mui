@@ -41,8 +41,6 @@ function CurrentValue() {
   const theme = useTheme();
   const jobState = useSelector((state) => state.job);
   useEffect(() => {}, [jobState.smallBarChart.currentValue]);
-  console.log("currentValue", jobState.smallBarChart.currentValue);
-  
 
   return (
     <div
@@ -59,7 +57,6 @@ function CurrentValue() {
 const BarPlot = React.memo(() => {
   const refPlot = useRef(null);
   const [data, setData] = useState([3, 2, 3, 10, 5, 2, 7, 1, 9, 8]);
-  const theme = useTheme();
   const dispatch = useDispatch();
 
   const BarHolder = styled('div')(({ theme }) => ({
