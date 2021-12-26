@@ -1,0 +1,15 @@
+.job-list{
+    &__container{
+        position: relative;
+    }
+    &__date{
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+    &__status{
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+}

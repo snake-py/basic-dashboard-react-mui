@@ -3,13 +3,14 @@ import Dashboard from './pages/Dashboard';
 import Overview from './pages/DashboardSubPages/Overview';
 import CreateJob from './pages/DashboardSubPages/CreateJob';
 import Upload from './pages/DashboardSubPages/Upload';
-import Jobs from './pages/DashboardSubPages/Jobs';
+import JobList from './pages/DashboardSubPages/Job/JobList';
 import { Routes, Route } from 'react-router-dom';
 import { styled } from '@mui/system';
 import { ThemeProvider } from '@mui/material/styles';
 import { useSelector,  } from 'react-redux';
 
 import { darkTheme, lightTheme } from './styler';
+import JobDetails from '@pages/DashboardSubPages/Job/JobDetails';
 
 const ColorWrapper = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
@@ -29,7 +30,8 @@ function App() {
         <Route path="/" element={<Overview />} />
         <Route path="/create" element={<CreateJob />} />
         <Route path="/upload" element={<Upload />} />
-        <Route path="/jobs" element={<Jobs />} />
+        <Route path="/jobs" element={<JobList />} />
+        <Route path="/job/:id" element={<JobDetails />} />
       </Routes>
     </ColorWrapper>
     </ThemeProvider>

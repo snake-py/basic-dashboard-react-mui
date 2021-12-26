@@ -8,6 +8,8 @@ export const darkTheme = createTheme({
     secondary: teal,
     background: {
       default: '#222222',
+      light: '#303030',
+      dark: '#101010',
     },
     text: {
       primary: '#ffffff',
@@ -27,6 +29,9 @@ export const lightTheme = createTheme({
     secondary: indigo,
     background: {
       default: '#e4f0e2',
+      light: '#effced',
+      dark: '#c2cfc0',
+
     },
     text: {
       primary: '#000000',

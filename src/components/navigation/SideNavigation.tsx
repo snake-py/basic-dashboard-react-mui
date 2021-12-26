@@ -55,7 +55,7 @@ export default function SideNavigation() {
             </StyledLink>
           </ListItem>
           <ListItem>
-            <StyledLink to="/Jobs" className="sideNavigation__link">
+            <StyledLink to="/jobs" className="sideNavigation__link">
               Jobs
             </StyledLink>
           </ListItem>
