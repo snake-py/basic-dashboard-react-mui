@@ -25,7 +25,7 @@ export default function JobList() {
           ? jobState.jobs.map((job: any) => {
               return (
                 <StyledLink key={job.id} to={`/job/${job.id}`}>
-                  <Wrapper styles={{ width: '100%' }}>
+                  <Wrapper  shouldHover={true} styles={{ width: '100%' }}>
                     <div className="job-list__container">
                       <h1 className="job-list__title">
                         #{job.id} {job.title}

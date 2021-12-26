@@ -1,0 +1,17 @@
+.bar-chart{
+    display: flex;
+    align-items: flex-end;
+}
+
+.small-bar-chart{
+    position: relative;
+&__number {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    font-size: 4rem;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translate(-50%, -50%);
+}
+}
