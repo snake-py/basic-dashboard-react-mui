@@ -1,7 +1,7 @@
 import { styled, Box, useTheme } from '@mui/system';
 import React from 'react';
 
-export default function Wrapper({ children, shouldHover = true, styles = {} }: { children: any; shouldHover: boolean; styles: any }) {
+export default function Wrapper({ children, shouldHover = true, styles = {} }: { children: any; shouldHover?: boolean; styles: any }) {
   const theme = useTheme();
   let hoverStyles = shouldHover
     ? {
