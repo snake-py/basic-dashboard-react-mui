@@ -133,12 +133,17 @@ const optionsPieChart = {
 };
 import React from 'react';
 import LineChart from '@charts/LineChart';
+import LineAreaChart from '@charts/LineAreaChart';
 import BarChart from '@charts/BarChart';
 import Wrapper from '@components/Wrapper';
 import PieChart from '@charts/PieChart';
 export default function PlotPlayground() {
   return (
     <div className="main-container">
+          <Wrapper shouldHover={false}>
+        <h1>Simple LineAreaChart</h1>
+        <LineAreaChart chartId="lineAreaChart" data={data_line_chart} options={options} />
+      </Wrapper>
       <Wrapper shouldHover={false}>
         <h1>Simple  PieChart</h1>
         <PieChart chartId="pieChart" data={data_pie_chart} options={optionsPieChart} />

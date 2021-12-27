@@ -41,8 +41,15 @@ export default function PieChart({ data, chartId, options }) {
       })
       .attr('stroke', 'black')
       .style('stroke-width', '2px')
-      .style('opacity', 0.7)
-
+      .attr('fill-opacity', 0.3)
+      .on('mouseover', function (e, d) {
+        d3.select(e.srcElement).attr('fill-opacity', .8);
+        // d3.selectAll('text').style('fill', 'white');
+      })
+      .on('mouseout', function (e, d) {
+        d3.select(e.srcElement).attr('fill-opacity', 0.3);
+        // d3.selectAll('text').style('fill', 'black');
+      });
 
     // Now add the annotation. Use the centroid method to get the best coordinates
     svg
@@ -56,7 +63,9 @@ export default function PieChart({ data, chartId, options }) {
         return `translate(${arcGenerator.centroid(d)})`;
       })
       .style('text-anchor', 'middle')
-      .style('font-size', 17);
+      .style('font-size', 17)
+
+
   });
   return <div ref={pieChart}></div>;
 }
