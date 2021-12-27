@@ -80,22 +80,59 @@
 //   );
 // }
 
-const data = [{x: 0, y: 0}, {x: 150, y: 150}, {x: 300, y: 100}, {x: 450, y: 20}, {x: 600, y: 130}]
+const data_line_chart = [
+  { x: 0, y: 0 },
+  { x: 150, y: 150 },
+  { x: 300, y: 100 },
+  { x: 450, y: 20 },
+  { x: 600, y: 130 },
+];
 const options = {
   chartWidth: 800,
   chartHeight: 400,
   chartMargin: { top: 20, right: 20, bottom: 30, left: 40 },
 };
+const data_bar_chart = [
+  {
+    name: 'Simon',
+    value: 50,
+  },
+  {
+    name: 'John',
+    value: 80,
+  },
+  {
+    name: 'Dave',
+    value: 100,
+  },
+  {
+    name: 'Tim',
+    value: 60,
+  },
+  {
+    name: 'Ti',
+    value: 80,
+  },
+  {
+    name: 'Mark',
+    value: 40,
+  },
+];
 
 import React from 'react';
 import LineChart from '@charts/LineChart';
+import BarChart from '@charts/BarChart';
 import Wrapper from '@components/Wrapper';
 export default function PlotPlayground() {
   return (
     <div className="main-container">
       <Wrapper shouldHover={false}>
         <h1>Simple Line Chart</h1>
-        <LineChart data={data} options={options} />
+        <LineChart data={data_line_chart} options={options} />
+      </Wrapper>
+      <Wrapper shouldHover={false}>
+        <h1>Simple Line BarChart</h1>
+        <BarChart data={data_bar_chart} options={options} />
       </Wrapper>
     </div>
   );

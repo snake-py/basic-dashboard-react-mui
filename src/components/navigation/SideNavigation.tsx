@@ -58,6 +58,9 @@ export default function SideNavigation() {
             <StyledLink to="/jobs" className="sideNavigation__link">
               Jobs
             </StyledLink>
+            <StyledLink to="/plot-playground" className="sideNavigation__link">
+              Plot Playground
+            </StyledLink>
           </ListItem>
         </ul>
       </StyledNavigation>

@@ -24,7 +24,9 @@ export default function BarChart({ data, options }) {
       .attr('font-size', '20px');
   };
   const yAxis = (g) => {
-    g.attr('transform', `translate(${chartMargin.left},0)`).call(d3.axisLeft(y).ticks(null, data.format)).attr('font-size', '20px');
+    g.attr('transform', `translate(${chartMargin.left},0)`)
+      .call(d3.axisLeft(y).ticks(null, data.format))
+      .attr('font-size', '20px');
   };
 
   useEffect(() => {

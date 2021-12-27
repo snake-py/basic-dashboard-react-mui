@@ -18,26 +18,27 @@ export default function LineChart({ data, options }) {
     .range([chartHeight - chartMargin.bottom, chartMargin.top]);
 
   useEffect(() => {
-    d3.select('#barChart').remove();
+    d3.select('#lineChart').remove();
     const svg = d3
       .select(lineChart.current)
       .append('svg')
-      .attr('id', 'barChart')
+      .attr('id', 'lineChart')
       .attr('width', chartWidth - chartMargin.left - chartMargin.right)
       .attr('height', chartHeight - chartMargin.top - chartMargin.bottom)
       .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`);
     const curveFunc = d3
       .line()
-      .curve(d3.curveStep)
-      .x((d, i) => d.x + chartMargin.left)
-      .y((d) => d.y + chartMargin.bottom);
+      .curve(d3.curveBasis)
+      .x((d, i) => {
+        console.log(d.x);
+        return x(d.x);
+      })
+      .y((d) => y(d.y));
 
     svg
       .append('path')
       .attr('d', curveFunc(data))
       .attr('stroke', theme.palette.primary.main)
-      .attr('transform-origin', '50% 50%')
-      .attr('transform', `scale(1,-1)`)
       .attr('fill', 'none')
       .attr('stroke-width', '2px');
 
@@ -50,7 +51,7 @@ export default function LineChart({ data, options }) {
     svg
       .append('g')
       .attr('transform', `translate(${chartMargin.left},0)`)
-      .call(d3.axisLeft(y).tickValues(d3.range(0, 150, 10)))
+      .call(d3.axisLeft(y).tickValues(d3.range(0, 151, 50)))
       .attr('font-size', '20px');
   });
   return <div ref={lineChart}></div>;
