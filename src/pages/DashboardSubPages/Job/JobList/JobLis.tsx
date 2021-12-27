@@ -1,5 +1,5 @@
 import React from 'react';
-import Wrapper from '@components/wrapper';
+import Wrapper from '@components/Wrapper';
 import { useSelector } from '@redux/hooks';
 import { styled, Box } from '@mui/system';
 import { Link } from 'react-router-dom';

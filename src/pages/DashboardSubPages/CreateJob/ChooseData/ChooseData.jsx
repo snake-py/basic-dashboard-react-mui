@@ -3,6 +3,7 @@ import { useSelector } from '@redux/hooks';
 import BarChart from '@charts/BarChart';
 import Wrapper from '@components/Wrapper';
 
+
 const data = [
   {
     name: 'Simon',

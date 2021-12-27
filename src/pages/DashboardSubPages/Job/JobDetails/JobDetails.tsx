@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useSelector, useDispatch } from '@redux/hooks';
 import { useParams } from 'react-router-dom';
-import Wrapper from '@components/wrapper';
+import Wrapper from '@components/Wrapper';
 import * as d3 from 'd3';
 import { styled, useTheme } from '@mui/material';
 import { setCurrentSmallBarChartValue } from '@redux/actions/jobActions';
