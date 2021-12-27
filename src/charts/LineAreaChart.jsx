@@ -29,10 +29,7 @@ export default function LineAreaChart({ data, chartId, options }) {
     const curveFunc = d3
       .line()
       .curve(d3.curveBasis)
-      .x((d, i) => {
-        console.log(d.x);
-        return x(d.x);
-      })
+      .x((d, i) => x(d.x))
       .y((d) => y(d.y));
 
     svg

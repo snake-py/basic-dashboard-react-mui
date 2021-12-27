@@ -42,13 +42,14 @@ export default function PieChart({ data, chartId, options }) {
       .attr('stroke', 'black')
       .style('stroke-width', '2px')
       .attr('fill-opacity', 0.3)
+      .style('transition', '0.5s')
       .on('mouseover', function (e, d) {
         d3.select(e.srcElement).attr('fill-opacity', .8);
-        // d3.selectAll('text').style('fill', 'white');
+        d3.select(e.srcElement).attr('transform', 'scale(1.1)');
       })
       .on('mouseout', function (e, d) {
         d3.select(e.srcElement).attr('fill-opacity', 0.3);
-        // d3.selectAll('text').style('fill', 'black');
+        d3.select(e.srcElement).attr('transform', 'scale(1)');
       });
 
     // Now add the annotation. Use the centroid method to get the best coordinates
