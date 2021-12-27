@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { useTheme } from '@emotion/react';
 
-export default function LineChart({ data, options }) {
+export default function LineChart({ data, chartId, options }) {
   const lineChart = useRef(null);
   const { chartHeight, chartWidth, chartMargin } = options;
   const theme = useTheme();
@@ -18,11 +18,11 @@ export default function LineChart({ data, options }) {
     .range([chartHeight - chartMargin.bottom, chartMargin.top]);
 
   useEffect(() => {
-    d3.select('#lineChart').remove();
+    d3.select(`#${chartId}`).remove();
     const svg = d3
       .select(lineChart.current)
       .append('svg')
-      .attr('id', 'lineChart')
+      .attr('id', chartId)
       .attr('width', chartWidth - chartMargin.left - chartMargin.right)
       .attr('height', chartHeight - chartMargin.top - chartMargin.bottom)
       .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`);

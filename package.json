@@ -27,7 +27,8 @@
     "react-vis": "^1.11.7",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
-    "sass": "^1.45.1"
+    "sass": "^1.45.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/d3": "^7.1.0",

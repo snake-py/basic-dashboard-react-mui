@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { useTheme } from '@emotion/react';
 
-export default function BarChart({ data, options }) {
+export default function BarChart({ data, chartId, options }) {
   const barChartRef = useRef(null);
   const { chartHeight, chartWidth, chartMargin } = options;
   const theme = useTheme();
@@ -30,11 +30,11 @@ export default function BarChart({ data, options }) {
   };
 
   useEffect(() => {
-    d3.select('#barChart').remove();
+    d3.select(`#${chartId}`).remove();
     const svg = d3
       .select(barChartRef.current)
       .append('svg')
-      .attr('id', 'barChart')
+      .attr('id', `${chartId}`)
       .attr('width', chartWidth - chartMargin.left - chartMargin.right)
       .attr('height', chartHeight - chartMargin.top - chartMargin.bottom)
       .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`);

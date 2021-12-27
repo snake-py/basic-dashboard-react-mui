@@ -87,11 +87,7 @@ const data_line_chart = [
   { x: 450, y: 20 },
   { x: 600, y: 130 },
 ];
-const options = {
-  chartWidth: 800,
-  chartHeight: 400,
-  chartMargin: { top: 20, right: 20, bottom: 30, left: 40 },
-};
+
 const data_bar_chart = [
   {
     name: 'Simon',
@@ -118,22 +114,44 @@ const data_bar_chart = [
     value: 40,
   },
 ];
-
+const data_pie_chart = {
+  python: 20,
+  javascript: 30,
+  c: 10,
+  cpp: 40,
+  java: 50,
+}
+const options = {
+  chartWidth: 800,
+  chartHeight: 400,
+  chartMargin: { top: 20, right: 20, bottom: 30, left: 40 },
+};
+const optionsPieChart = {
+  chartWidth: 800,
+  chartHeight: 400,
+  chartMargin: 20
+};
 import React from 'react';
 import LineChart from '@charts/LineChart';
 import BarChart from '@charts/BarChart';
 import Wrapper from '@components/Wrapper';
+import PieChart from '@charts/PieChart';
 export default function PlotPlayground() {
   return (
     <div className="main-container">
       <Wrapper shouldHover={false}>
-        <h1>Simple Line Chart</h1>
-        <LineChart data={data_line_chart} options={options} />
+        <h1>Simple  PieChart</h1>
+        <PieChart chartId="pieChart" data={data_pie_chart} options={optionsPieChart} />
       </Wrapper>
       <Wrapper shouldHover={false}>
-        <h1>Simple Line BarChart</h1>
-        <BarChart data={data_bar_chart} options={options} />
+        <h1>Simple LineChart</h1>
+        <LineChart chartId="lineChart" data={data_line_chart} options={options} />
       </Wrapper>
+      <Wrapper shouldHover={false}>
+        <h1>Simple BarChart</h1>
+        <BarChart chartId="arChart1" data={data_bar_chart} options={options} />
+      </Wrapper>
+
     </div>
   );
 }
