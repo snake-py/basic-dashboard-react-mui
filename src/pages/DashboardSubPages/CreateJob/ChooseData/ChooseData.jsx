@@ -21,6 +21,14 @@ const data = [
     name: 'Tim',
     value: 60,
   },
+  {
+    name: 'Ti',
+    value: 80,
+  },
+  {
+    name: 'Mark',
+    value: 40,
+  },
 ];
 const options = {
   chartWidth: 800,

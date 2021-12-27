@@ -5,7 +5,7 @@ import { useTheme } from '@emotion/react';
 export default function BarChart({ data, options }) {
   const barChartRef = useRef(null);
   const { chartHeight, chartWidth, chartMargin } = options;
-    const theme = useTheme()
+  const theme = useTheme();
 
   const x = d3
     .scaleBand()
@@ -47,7 +47,18 @@ export default function BarChart({ data, options }) {
       .attr('x', (d, i) => x(i))
       .attr('y', (d) => y(d.value))
       .attr('height', (d) => y(0) - y(d.value))
-      .attr('width', x.bandwidth());
+      .attr('width', x.bandwidth())
+      .attr('fill-opacity', 0.2)
+      .attr('stroke', theme.palette.primary.main)
+      .attr('stroke-width', '2px')
+      .on('mouseover', (e, d) => {
+        console.log(e, d);
+        d3.select(e.srcElement).attr('fill-opacity', 0.8);
+      })
+      .on('mouseout', (e, d) => {
+        console.log(e, d);
+        d3.select(e.srcElement).attr('fill-opacity', 0.3);
+      });
 
     svg.append('g').call(xAxis);
     svg.append('g').call(yAxis);
