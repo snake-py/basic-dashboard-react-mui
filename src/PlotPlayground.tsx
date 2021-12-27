@@ -37,7 +37,7 @@ export default function PlotPlayground() {
     //@ts-ignore
     .domain([0, 100])
     .range([barChartHeight - barChartMargin.bottom, barChartMargin.top]);
-    
+
     const xAxis = (g: any) => {
         g.attr('transform', `translate(0,${barChartHeight - barChartMargin.bottom})`)
         .call(d3.axisBottom(x).tickFormat((i: any) => data[i].name))
@@ -79,3 +79,4 @@ export default function PlotPlayground() {
     </div>
   );
 }
+
