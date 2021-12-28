@@ -43,13 +43,14 @@ export default function PieChart({ data, chartId, options }) {
       .style('stroke-width', '2px')
       .attr('fill-opacity', 0.3)
       .style('transition', '0.5s')
-      .on('mouseover', function (e, d) {
-        d3.select(e.srcElement).attr('fill-opacity', .8);
-        d3.select(e.srcElement).attr('transform', 'scale(1.1)');
+      .on('mouseover', function (e, d, i) {
+        d3.select(e.srcElement).attr('fill-opacity', 0.8);
+        // d3.select(e.srcElement).attr('transform', 'scale(1.1)');
       })
       .on('mouseout', function (e, d) {
         d3.select(e.srcElement).attr('fill-opacity', 0.3);
-        d3.select(e.srcElement).attr('transform', 'scale(1)');
+        // d3.select(e.srcElement).attr('transform', 'scale(1)');
+        // d3.select(e.srcElement).selectAll('text')
       });
 
     // Now add the annotation. Use the centroid method to get the best coordinates
@@ -65,7 +66,7 @@ export default function PieChart({ data, chartId, options }) {
       })
       .style('text-anchor', 'middle')
       .style('font-size', 17)
-
+      .style('pointer-events', 'none');
 
   });
   return <div ref={pieChart}></div>;

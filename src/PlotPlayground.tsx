@@ -120,7 +120,7 @@ const data_pie_chart = {
   c: 10,
   cpp: 40,
   java: 50,
-}
+};
 const options = {
   chartWidth: 800,
   chartHeight: 400,
@@ -129,7 +129,7 @@ const options = {
 const optionsPieChart = {
   chartWidth: 800,
   chartHeight: 400,
-  chartMargin: 20
+  chartMargin: 20,
 };
 import React from 'react';
 import LineChart from '@charts/LineChart';
@@ -137,26 +137,46 @@ import LineAreaChart from '@charts/LineAreaChart';
 import BarChart from '@charts/BarChart';
 import Wrapper from '@components/Wrapper';
 import PieChart from '@charts/PieChart';
+import ScatterChart from '@charts/ScatterChart';
 export default function PlotPlayground() {
   return (
     <div className="main-container">
-          <Wrapper shouldHover={false}>
-        <h1>Simple LineAreaChart</h1>
-        <LineAreaChart chartId="lineAreaChart" data={data_line_chart} options={options} />
+      <Wrapper shouldHover={false}>
+        <h1>Simple ScatterChart</h1>
+        <ScatterChart
+          chartId="scatterChart"
+          data={data_line_chart}
+          options={options}
+        />
       </Wrapper>
       <Wrapper shouldHover={false}>
-        <h1>Simple  PieChart</h1>
-        <PieChart chartId="pieChart" data={data_pie_chart} options={optionsPieChart} />
+        <h1>Simple LineAreaChart</h1>
+        <LineAreaChart
+          chartId="lineAreaChart"
+          data={data_line_chart}
+          options={options}
+        />
+      </Wrapper>
+      <Wrapper shouldHover={false}>
+        <h1>Simple PieChart</h1>
+        <PieChart
+          chartId="pieChart"
+          data={data_pie_chart}
+          options={optionsPieChart}
+        />
       </Wrapper>
       <Wrapper shouldHover={false}>
         <h1>Simple LineChart</h1>
-        <LineChart chartId="lineChart" data={data_line_chart} options={options} />
+        <LineChart
+          chartId="lineChart"
+          data={data_line_chart}
+          options={options}
+        />
       </Wrapper>
       <Wrapper shouldHover={false}>
         <h1>Simple BarChart</h1>
         <BarChart chartId="arChart1" data={data_bar_chart} options={options} />
       </Wrapper>
-
     </div>
   );
 }
