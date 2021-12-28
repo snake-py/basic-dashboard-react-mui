@@ -54,7 +54,7 @@ export default function BarChart({ data, chartId, options }) {
       .attr('stroke', theme.palette.primary.main)
       .attr('stroke-width', '2px')
       .on('mouseover', (e, d) => {
-        d3.select(e.srcElement).attr('fill-opacity', 0.8);
+        d3.select(e.srcElement).attr('fill-opacity', 1);
       })
       .on('mouseout', (e, d) => {
         d3.select(e.srcElement).attr('fill-opacity', 0.3);

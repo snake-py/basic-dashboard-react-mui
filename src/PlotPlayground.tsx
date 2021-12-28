@@ -132,13 +132,103 @@ const data_pie_chart = {
   cpp: 40,
   java: 50,
 };
+
+const data_bar_stacked_chart = [
+  {
+      "group": "banana",
+      "A": "12",
+      "B": "1",
+      "C": "13",
+      "D": "11",
+      "E": "2",
+      "F": "5",
+      "G": "22"
+  },
+  {
+      "group": "poacee",
+      "A": "6",
+      "B": "6",
+      "C": "33",
+      "D": "19",
+      "E": "5",
+      "F": "5",
+      "G": "11"
+  },
+  {
+      "group": "sorgho",
+      "A": "11",
+      "B": "28",
+      "C": "12",
+      "D": "8",
+      "E": "2",
+      "F": "7",
+      "G": "31"
+  },
+  {
+      "group": "carot",
+      "A": "19",
+      "B": "6",
+      "C": "1",
+      "D": "11",
+      "E": "2",
+      "F": "4",
+      "G": "17"
+  },
+  {
+      "group": "apple",
+      "A": "29",
+      "B": "6",
+      "C": "2",
+      "D": "19",
+      "E": "2",
+      "F": "4",
+      "G": "10"
+  },
+  {
+      "group": "mango",
+      "A": "19",
+      "B": "16",
+      "C": "3",
+      "D": "14",
+      "E": "2",
+      "F": "4",
+      "G": "11"
+  },
+  {
+      "group": "olive",
+      "A": "8",
+      "B": "22",
+      "C": "4",
+      "D": "11",
+      "E": "2",
+      "F": "4",
+      "G": "12"
+  },
+  {
+      "group": "ananas",
+      "A": "19",
+      "B": "6",
+      "C": "1",
+      "D": "18",
+      "E": "23",
+      "F": "2",
+      "G": "19"
+  }
+]
 const options = {
   chartWidth: 800,
   chartHeight: 400,
   chartMargin: { top: 20, right: 20, bottom: 30, left: 40 },
 };
+const optionsBarStacked = {
+  chartWidth: 800,
+  chartHeight: 400,
+  mainGroup: 'group',
+  chartMargin: { top: 20, right: 20, bottom: 30, left: 40 },
+};
 const optionsPathChart = {
   chartWidth: 1100,
+
   chartHeight: 800,
   chartMargin: { top: 20, right: 20, bottom: 30, left: 40 },
 };
@@ -147,10 +237,12 @@ const optionsPieChart = {
   chartHeight: 400,
   chartMargin: 20,
 };
+
 import React from 'react';
 import LineChart from '@charts/LineChart';
 import LineAreaChart from '@charts/LineAreaChart';
 import BarChart from '@charts/BarChart';
+import BarStackedChart from '@charts/BarStackedChart';
 import Wrapper from '@components/Wrapper';
 import PieChart from '@charts/PieChart';
 import ScatterChart from '@charts/ScatterChart';
@@ -158,6 +250,14 @@ import PathChart from '@charts/PathChart';
 export default function PlotPlayground() {
   return (
     <div className="main-container">
+      <Wrapper shouldHover={false}>
+        <h1>Stacked BarChart</h1>
+        <BarStackedChart
+          chartId="barStackedChart"
+          data={data_bar_stacked_chart}
+          options={optionsBarStacked}
+        />
+      </Wrapper>
       <Wrapper shouldHover={false}>
         <h1>Simple PathChart</h1>
         <PathChart
@@ -200,7 +300,7 @@ export default function PlotPlayground() {
       </Wrapper>
       <Wrapper shouldHover={false}>
         <h1>Simple BarChart</h1>
-        <BarChart chartId="arChart1" data={data_bar_chart} options={options} />
+        <BarChart chartId="barChart" data={data_bar_chart} options={options} />
       </Wrapper>
     </div>
   );

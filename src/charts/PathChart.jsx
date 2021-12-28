@@ -7,8 +7,6 @@ export default function PathChart({ data, chartId, options }) {
   const { chartHeight, chartWidth, chartMargin } = options;
   const theme = useTheme();
   const dimensions = Object.keys(data[0]);
-  console.log(dimensions);
-  console.log(data);
 
   const y = {};
   for (let i in dimensions) {
@@ -61,7 +59,6 @@ export default function PathChart({ data, chartId, options }) {
       .style('stroke-width', '10px')
       .style('transition', 'all 0.1s ease-in-out')
       .on('mouseover', function (e, d, i) {
-        console.log(e);
         d3.select(e.srcElement).style('opacity', 0.8);
       })
       .on('mouseout', function (e, d) {
