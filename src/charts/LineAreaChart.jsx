@@ -25,6 +25,7 @@ export default function LineAreaChart({ data, chartId, options }) {
       .attr('id', chartId)
       .attr('width', chartWidth - chartMargin.left - chartMargin.right)
       .attr('height', chartHeight - chartMargin.top - chartMargin.bottom)
+      .classed("svg-content-responsive", true)
       .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`);
     const curveFunc = d3
       .line()

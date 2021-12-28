@@ -28,7 +28,7 @@ export default function BarStackedChart({ data, chartId, options }) {
 
   //stack the data? --> stack per subgroup
   const stackedData = d3.stack().keys(subgroups)(data);
-
+console.log(stackedData);
   useEffect(() => {
     d3.select(`#${chartId}`).remove();
     const svg = d3
@@ -36,6 +36,7 @@ export default function BarStackedChart({ data, chartId, options }) {
       .append('svg')
       .attr('id', `${chartId}`)
       .attr('width', chartWidth + chartMargin.left + chartMargin.right)
+      .classed("svg-content-responsive", true)
       .style(
         'margin',
         `${chartMargin.top}px ${chartMargin.right}px ${chartMargin.bottom}px ${chartMargin.left}px`
@@ -48,7 +49,8 @@ export default function BarStackedChart({ data, chartId, options }) {
         }`
       )
       .append('g')
-      .attr('transform', `translate(${chartMargin.left},${chartMargin.top})`);
+      .attr('transform', `translate(${chartMargin.left},${chartMargin.top})`)
+
     svg
       .append('g')
       .selectAll('g')

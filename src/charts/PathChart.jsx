@@ -45,7 +45,9 @@ export default function PathChart({ data, chartId, options }) {
       .attr('id', `${chartId}`)
       .attr('width', chartWidth - chartMargin.left - chartMargin.right)
       .attr('height', chartHeight - chartMargin.top - chartMargin.bottom)
-      .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`);
+      .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`)
+      .classed("svg-content-responsive", true)
+
 
     // Draw the lines
     svg

@@ -37,7 +37,9 @@ export default function BarChart({ data, chartId, options }) {
       .attr('id', `${chartId}`)
       .attr('width', chartWidth - chartMargin.left - chartMargin.right)
       .attr('height', chartHeight - chartMargin.top - chartMargin.bottom)
-      .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`);
+      .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`)
+      .classed("svg-content-responsive", true)
+
 
     svg
       .append('g')
@@ -63,5 +65,5 @@ export default function BarChart({ data, chartId, options }) {
     svg.append('g').call(xAxis);
     svg.append('g').call(yAxis);
   });
-  return <div ref={barChartRef}></div>;
+  return <div className='svg-container' ref={barChartRef}></div>;
 }

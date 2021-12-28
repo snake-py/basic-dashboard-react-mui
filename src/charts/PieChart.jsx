@@ -25,6 +25,8 @@ export default function PieChart({ data, chartId, options }) {
       .attr('width', chartWidth - chartMargin - chartMargin)
       .attr('height', chartHeight - chartMargin - chartMargin)
       .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`)
+      .classed("svg-content-responsive", true)
+
       .append('g')
       .attr(
         'transform',
