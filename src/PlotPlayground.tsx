@@ -87,7 +87,6 @@ const data_line_chart = [
   { x: 450, y: 20 },
   { x: 600, y: 130 },
 ];
-
 const data_bar_chart = [
   {
     name: 'Simon',
@@ -114,6 +113,18 @@ const data_bar_chart = [
     value: 40,
   },
 ];
+const data_path_chart = [
+  { word_1: 10, word_2: 1, word_3: 1 },
+  { word_1: 20, word_2: 33, word_3: 5 },
+  { word_1: 30, word_2: 13, word_3: 10 },
+  { word_1: 25, word_2: 15, word_3: 35 },
+  { word_1: 50, word_2: 23, word_3: 22 },
+  { word_1: 17, word_2: 43, word_3: 50 },
+  { word_1: 39, word_2: 44, word_3: 17 },
+  { word_1: 45, word_2: 50, word_3: 44 },
+  { word_1: 6, word_2: 20, word_3: 48 },
+];
+
 const data_pie_chart = {
   python: 20,
   javascript: 30,
@@ -124,6 +135,11 @@ const data_pie_chart = {
 const options = {
   chartWidth: 800,
   chartHeight: 400,
+  chartMargin: { top: 20, right: 20, bottom: 30, left: 40 },
+};
+const optionsPathChart = {
+  chartWidth: 1100,
+  chartHeight: 800,
   chartMargin: { top: 20, right: 20, bottom: 30, left: 40 },
 };
 const optionsPieChart = {
@@ -138,9 +154,18 @@ import BarChart from '@charts/BarChart';
 import Wrapper from '@components/Wrapper';
 import PieChart from '@charts/PieChart';
 import ScatterChart from '@charts/ScatterChart';
+import PathChart from '@charts/PathChart';
 export default function PlotPlayground() {
   return (
     <div className="main-container">
+      <Wrapper shouldHover={false}>
+        <h1>Simple PathChart</h1>
+        <PathChart
+          chartId="pathChart"
+          data={data_path_chart}
+          options={optionsPathChart}
+        />
+      </Wrapper>
       <Wrapper shouldHover={false}>
         <h1>Simple ScatterChart</h1>
         <ScatterChart
