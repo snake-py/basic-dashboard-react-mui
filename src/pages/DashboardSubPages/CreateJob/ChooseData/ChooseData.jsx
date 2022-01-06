@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { useSelector } from '@redux/hooks';
+import { useSelector } from '@state';
 import BarChart from '@charts/BarChart';
 import Wrapper from '@components/Wrapper';
 

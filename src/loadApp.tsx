@@ -1,6 +1,7 @@
-import store from './redux/store';
-
+import { store } from '@state';
+import { AppActionTypes } from '@state/action-types';
+AppActionTypes
 export const loadApp = () => {
-    
-    store.dispatch({ type: 'APP_READY', payload: { ready: true} });
-}
+    //@ts-ignore
+  store.dispatch({ type: AppActionTypes.APP_READY, payload: { ready: true } });
+};

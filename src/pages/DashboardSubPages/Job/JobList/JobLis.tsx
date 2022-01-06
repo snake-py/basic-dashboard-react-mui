@@ -1,12 +1,12 @@
 import React from 'react';
 import Wrapper from '@components/Wrapper';
-import { useSelector } from '@redux/hooks';
+
 import { styled, Box } from '@mui/system';
 import { Link } from 'react-router-dom';
+import { State, useSelector } from '@state';
 
 export default function JobList() {
-  //@ts-ignore
-  const jobState = useSelector((state) => state.job);
+  const jobState = useSelector((state: State) => state.job);
   const StyledBox = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.background.default,
   }));

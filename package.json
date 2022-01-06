@@ -26,6 +26,7 @@
     "react-router-dom": "^6.2.1",
     "react-vis": "^1.11.7",
     "redux": "^4.1.2",
+    "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.1",
     "sass": "^1.45.1",
     "uuid": "^8.3.2"

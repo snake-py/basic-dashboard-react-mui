@@ -4,7 +4,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 import './static/scss/index.scss';
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import { store } from './state';
 import { loadApp } from './loadApp';
 import CssBaseline from '@mui/material/CssBaseline';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -23,7 +23,7 @@ ReactDOM.render(
           </>
         ) : (
           <div className="loader">
-            <CircularProgress/>
+            <CircularProgress />
           </div>
         )}
       </Provider>

@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { switchTheme } from '../../redux/actions/appActions';
+import { AppActionCreators } from '@state';
 import { styled } from '@mui/system';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
+import { bindActionCreators } from 'redux';
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -63,6 +63,8 @@ export default function TopNavigation() {
   //@ts-ignore
   const app = useSelector((state) => state.app);
   const dispatch = useDispatch();
+  const { switchTheme } = bindActionCreators(AppActionCreators, dispatch);
+
   return (
     <StyledHeader>
       <FormGroup>

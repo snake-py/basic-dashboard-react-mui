@@ -41,13 +41,15 @@ export default function PathChart({ data, chartId, options }) {
       .select(barChartRef.current)
       .append('svg')
       .style('height', chartHeight + chartMargin.top + chartMargin.bottom + 25)
-      .style('padding', `${chartMargin.top}px ${chartMargin.right}px ${chartMargin.bottom}px ${chartMargin.left}px`)
+      .style(
+        'padding',
+        `${chartMargin.top}px ${chartMargin.right}px ${chartMargin.bottom}px ${chartMargin.left}px`
+      )
       .attr('id', `${chartId}`)
       .attr('width', chartWidth - chartMargin.left - chartMargin.right)
       .attr('height', chartHeight - chartMargin.top - chartMargin.bottom)
       .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`)
-      .classed("svg-content-responsive", true)
-
+      .classed('svg-content-responsive-path', true);
 
     // Draw the lines
     svg

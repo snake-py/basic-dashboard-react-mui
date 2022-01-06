@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from '@redux/hooks';
 import { useParams } from 'react-router-dom';
 import Wrapper from '@components/Wrapper';
+import { useDispatch, useSelector } from 'react-redux';
 import * as d3 from 'd3';
 import { styled, useTheme } from '@mui/material';
-import { setCurrentSmallBarChartValue } from '@redux/actions/jobActions';
+import { JobActionCreators, State } from '@state';
+import { bindActionCreators } from 'redux';
 
 export default function JobDetails() {
   const { id } = useParams();
@@ -39,8 +40,8 @@ export default function JobDetails() {
 
 function CurrentValue() {
   const theme = useTheme();
-  const jobState = useSelector((state) => state.job);
-  useEffect(() => {}, [jobState.smallBarChart.currentValue]);
+  const jobState = useSelector((state: State) => state.job);
+  useEffect(() => {}, [jobState.smallBarChartCurrentValue]);
 
   return (
     <div
@@ -49,7 +50,9 @@ function CurrentValue() {
       }}
       className="small-bar-chart__number"
     >
-      {jobState.smallBarChart.currentValue ? jobState.smallBarChart.currentValue : 0}
+      {jobState.smallBarChartCurrentValue
+        ? jobState.smallBarChartCurrentValue
+        : 0}
     </div>
   );
 }
@@ -58,6 +61,10 @@ const BarPlot = React.memo(() => {
   const refPlot = useRef(null);
   const [data, setData] = useState([3, 2, 3, 10, 5, 2, 7, 1, 9, 8]);
   const dispatch = useDispatch();
+  const { setCurrentSmallBarChartValue } = bindActionCreators(
+    JobActionCreators,
+    dispatch
+  );
 
   const BarHolder = styled('div')(({ theme }) => ({
     display: 'flex',
