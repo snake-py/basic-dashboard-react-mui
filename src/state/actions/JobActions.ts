@@ -11,6 +11,11 @@ interface SetCurrentSmallBarChartValue {
   payload: number ;
 }
 
+interface LoadJobCreateData {
+  type: JobActionTypes.LOAD_JOB_CREATE_DATA;
+  payload: Array<object> ;
+}
 
 
-export type Actions = CreateJobStepper | SetCurrentSmallBarChartValue;
+
+export type Actions = CreateJobStepper | SetCurrentSmallBarChartValue | LoadJobCreateData;
