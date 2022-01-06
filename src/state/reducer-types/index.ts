@@ -36,5 +36,5 @@ export interface IJobState {
   jobs: IJob[];
   activeJobCreateStep: 0 | 1 | 2;
   smallBarChartCurrentValue: number;
-  jobCreationData: IJobCreationData[];
+  jobCreationData: Array<IJobCreationData>;
 }

@@ -53,7 +53,10 @@ const initialState: IJobState = {
   jobCreationData: [],
 };
 
-export function jobReducer(state = initialState, action: JobActions) {
+export function jobReducer(
+  state = initialState,
+  action: JobActions
+): IJobState {
   console.log('type: ' + action.type);
   switch (action.type) {
     case JobActionTypes.SET_ACTIVE_JOB_CREATE_STEP:

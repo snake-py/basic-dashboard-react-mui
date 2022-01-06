@@ -15,7 +15,7 @@ export default function BarChart({ data, chartId, options }) {
 
   const y = d3
     .scaleLinear()
-    .domain([0, 100])
+    .domain([0, d3.max(data, (d) => d.value)])
     .range([chartHeight - chartMargin.bottom, chartMargin.top]);
 
   const xAxis = (g) => {

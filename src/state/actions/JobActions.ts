@@ -1,3 +1,4 @@
+import { IJobCreationData } from '@state/reducer-types';
 import { JobActionTypes } from '../action-types';
 
 interface CreateJobStepper {
@@ -13,7 +14,7 @@ interface SetCurrentSmallBarChartValue {
 
 interface LoadJobCreateData {
   type: JobActionTypes.LOAD_JOB_CREATE_DATA;
-  payload: Array<object> ;
+  payload:  IJobCreationData[];
 }
 
 

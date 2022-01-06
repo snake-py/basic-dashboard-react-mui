@@ -3,8 +3,8 @@ import { appReducer } from './appReducer';
 import { jobReducer } from './jobReducer';
 
 const reducers = combineReducers({
+  job: jobReducer,
   app: appReducer,
-  job: jobReducer
 });
 
 export default reducers;
