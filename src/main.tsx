@@ -9,10 +9,10 @@ import { loadApp } from './loadApp';
 import CssBaseline from '@mui/material/CssBaseline';
 import CircularProgress from '@mui/material/CircularProgress';
 
-if (process.env.NODE_ENV === 'prod') {
-  //@ts-ignore
-  console.log() = () => {};
-}
+// if (process.env.NODE_ENV === 'prod') {
+//   //@ts-ignore
+//   console.log() = () => {};
+// }
 
 loadApp();
 console.log('store: ', store.getState());

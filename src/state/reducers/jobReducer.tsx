@@ -3,8 +3,6 @@ import { JobActions } from '@state/actions';
 import { IJob, IJobState, JobStatus } from '@state/reducer-types';
 import faker from 'faker';
 
-
-
 const jobs: IJob[] = [
   {
     id: 1,
@@ -52,9 +50,8 @@ const initialState: IJobState = {
   jobs,
   activeJobCreateStep: 0,
   smallBarChartCurrentValue: 0,
-  jobCreationData: []
-
-}
+  jobCreationData: [],
+};
 
 export function jobReducer(state = initialState, action: JobActions) {
   console.log('type: ' + action.type);
@@ -68,6 +65,11 @@ export function jobReducer(state = initialState, action: JobActions) {
       return {
         ...state,
         smallBarChartCurrentValue: action.payload,
+      };
+    case JobActionTypes.LOAD_JOB_CREATE_DATA:
+      return {
+        ...state,
+        jobCreationData: [...action.payload],
       };
     default:
       return state;

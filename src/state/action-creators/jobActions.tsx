@@ -24,6 +24,7 @@ export const setCurrentSmallBarChartValue =
 
 export const loadJobCreateData =
   (id: string) => async (dispatch: Dispatch<JobActions>) => {
+    console.log("loadJobCreateData");
     await apiService.getCreationData({ userId: id }).then((data) => {
       return dispatch({
         type: JobActionTypes.LOAD_JOB_CREATE_DATA,
