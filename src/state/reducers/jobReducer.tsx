@@ -52,6 +52,8 @@ const initialState: IJobState = {
   jobs,
   activeJobCreateStep: 0,
   smallBarChartCurrentValue: 0,
+  jobCreationData: []
+
 }
 
 export function jobReducer(state = initialState, action: JobActions) {
