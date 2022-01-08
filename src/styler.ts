@@ -16,59 +16,70 @@ import {
 //   }
 //   interface PaletteOptions  {
 //     test?: PaletteColorOptions;
-//     test2?: PaletteColorOptions;
 //   }
 //   interface Palette  {
+//     test?: PaletteColorOptions;
 
 //   }
 // }
 
-// function creatMyTheme(options?: ThemeOptions) {
-//   return createTheme({
-//     ...options,
-//   });
-// }
-
-// export default creatMyTheme({
-//   palette: {
-//     test: yellow,
-//     mode: 'dark',
-//     primary: yellow,
-//     secondary: teal,
-//     text: {
-//       primary: '#ffffff',
-//       secondary: '#000000',
-//     },
-//   },
-// });
-
-const theme = {
+const customDarkTheme = {
   palette: {
-    primary: {
-      main: '#556cd6',
-    },
-    secondary: {
-      main: '#19857b',
-    },
-    error: {
-      main: yellow.A400,
-    },
+    mode: 'dark',
+    primary: yellow,
+    secondary: teal,
     background: {
-      default: '#fff',
+      default: '#e4f0e2',
+      light: '#effced',
+      dark: '#c2cfc0',
+    },
+    text: {
+      primary: '#ffffff',
+      secondary: '#000000',
+    },
+    customDivider: {
+      primary: '#ffffff',
+      secondary: '#000000',
+    },
+  },
+} as const;
+
+const customLightTheme = {
+  palette: {
+    mode: 'light',
+    primary: blue,
+    secondary: indigo,
+    background: {
+      default: '#e4f0e2',
+      light: '#effced',
+      dark: '#c2cfc0',
+    },
+    text: {
+      primary: '#000000',
+      secondary: '#ffffff',
+    },
+    customDivider: {
+      primary: '#000000',
+      secondary: '#ffffff',
     },
   },
 } as const;
 
 type CustomTheme = {
-  [Key in keyof typeof theme]: typeof theme[Key];
+  [Key in keyof typeof customDarkTheme]: typeof customDarkTheme[Key];
+};
+type CustomPallet = {
+  [Key in keyof typeof customDarkTheme.palette]: typeof customDarkTheme.palette[Key];
 };
 
 declare module '@mui/material/styles' {
   interface Theme extends CustomTheme {}
   interface ThemeOptions extends CustomTheme {}
+  interface Palette extends CustomPallet {}
 }
 
-export const darkTheme = createTheme(theme);
+export const darkTheme = createTheme(customDarkTheme);
+export const lightTheme = createTheme(customLightTheme);
 
 // export const darkTheme = createTheme({
 //   palette: {

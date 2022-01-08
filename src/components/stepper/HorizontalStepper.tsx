@@ -10,8 +10,8 @@ import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { bindActionCreators } from 'redux';
-import { useTheme } from '@emotion/react';
-import { createStyles } from '@mui/material';
+// import { useTheme } from '@emotion/react';
+import { createStyles, useTheme } from '@mui/material';
 interface IProp {
   children: React.ReactNode;
   steps: string[];
@@ -23,12 +23,7 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const { createJobStepper } = bindActionCreators(JobActionCreators, dispatch);
-  // const styles = (theme) =>
-  //   createStyles({
-  //     root: {
-  //       backgroundColor: theme.pallet,
-  //     },
-  //   });
+
   useEffect(() => {
     dispatch(createJobStepper(activeStep));
   }, [activeStep]);
@@ -53,7 +48,7 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
           return (
             <Step key={label}>
               <StepLabel>
-                <span style={{ color: theme.palette }}>{label}</span>
+                <span style={{ color: theme.palette.text.primary}}>{label}</span>
               </StepLabel>
             </Step>
           );
