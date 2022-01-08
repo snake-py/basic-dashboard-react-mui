@@ -22,6 +22,7 @@ import {
 
 //   }
 // }
+const plotColor = [yellow[50], yellow[100]];
 
 const customDarkTheme = {
   palette: {
@@ -41,6 +42,14 @@ const customDarkTheme = {
       primary: '#ffffff',
       secondary: '#000000',
     },
+    plotColors: [
+      '#ffeb3b',
+      '#FF00E8',
+      '#FF0000',
+      '#1BFF00',
+      '#00FFE0',
+      '#2900FF',
+    ],
   },
 } as const;
 
@@ -62,6 +71,14 @@ const customLightTheme = {
       primary: '#000000',
       secondary: '#ffffff',
     },
+    plotColors: [
+      '#ffeb3b',
+      '#FF00E8',
+      '#FF0000',
+      '#1BFF00',
+      '#00FFE0',
+      '#2900FF',
+    ],
   },
 } as const;
 
@@ -80,4 +97,3 @@ declare module '@mui/material/styles' {
 
 export const darkTheme = createTheme(customDarkTheme);
 export const lightTheme = createTheme(customLightTheme);
-

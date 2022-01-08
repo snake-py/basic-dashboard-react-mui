@@ -7,8 +7,7 @@ import { IJobCreationData } from '@state/reducer-types';
 import ListBox from '@components/ListBox';
 import { IDataPickerProps } from '@interfaces/Props';
 
-const DataPicker: React.FC<IDataPickerProps> = ({jobCreationData}) => {
-
+const DataPicker: React.FC<IDataPickerProps> = ({ jobCreationData }) => {
   return (
     <div>
       <Wrapper
@@ -21,11 +20,13 @@ const DataPicker: React.FC<IDataPickerProps> = ({jobCreationData}) => {
           alignItems: 'center',
           overflowY: 'scroll',
           height: '70vh',
+          borderRadius: '1rem',
         }}
       >
         {jobCreationData.length > 1 ? (
           jobCreationData.map((data: IJobCreationData) => {
-            {console.log("execute");
+            {
+              console.log('execute');
             }
             return (
               <div key={data.id} className="data-list__container">
@@ -39,12 +40,6 @@ const DataPicker: React.FC<IDataPickerProps> = ({jobCreationData}) => {
       </Wrapper>
     </div>
   );
-}
-
-const WrapperStyles = {
-  width: '50%',
-  height: '55vh',
-  overflowY: 'auto',
 };
 
 export default DataPicker;
