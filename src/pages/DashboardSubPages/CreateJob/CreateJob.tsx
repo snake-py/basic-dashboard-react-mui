@@ -11,7 +11,7 @@ export default function CreateJob() {
     <div className="main-container">
       <HorizontalStepper steps={['Choose Data', 'Set Date Range', 'Summary&Create']}>
         <div className="stepper-inner-container">
-          {job.activeJobCreateStep === 0 && <ChooseData />}
+          {job.activeJobCreateStep === 0 && <ChooseData jobCreationData={job.jobCreationData}/>}
           {job.activeJobCreateStep === 1 && <ChooseDateRange />}
           {job.activeJobCreateStep === 2 && <SummaryJob />}
         </div>

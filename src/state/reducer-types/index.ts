@@ -21,7 +21,7 @@ export interface IJob {
 }
 
 export interface IJobCreationData {
-  id: number;
+  id: string;
   averageLenth: number;
   first_review: Date;
   last_review: Date;
@@ -32,9 +32,11 @@ export interface IJobCreationData {
   uploadedBy: string;
 }
 
+
 export interface IJobState {
   jobs: IJob[];
   activeJobCreateStep: 0 | 1 | 2;
   smallBarChartCurrentValue: number;
   jobCreationData: Array<IJobCreationData>;
+  chosenJobCreationData: IJobCreationData[];
 }

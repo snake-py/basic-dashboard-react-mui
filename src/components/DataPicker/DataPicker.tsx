@@ -1,30 +1,43 @@
 import Wrapper from '@components/Wrapper';
-import { Input } from '@mui/material';
-import React from 'react';
-import { useSelector, State } from '@state';
+import { Input, Box, alpha } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { useSelector, State, JobActionCreators } from '@state';
+import { IJobCreationData } from '@state/reducer-types';
 
-export default function DataPicker() {
-  const job = useSelector((state: State) => state.job);
-  console.log('job', job);
+import ListBox from '@components/ListBox';
+import { IDataPickerProps } from '@interfaces/Props';
+
+const DataPicker: React.FC<IDataPickerProps> = ({jobCreationData}) => {
 
   return (
-    <Wrapper shouldHover={false} styles={WrapperStyles}>
-      <Input />
-      <br />
-
-      {job.jobCreationData.length > 1 ? (
-        job.jobCreationData.map((data) => {
-          return (
-            <div className="data-list__container">
-                #{data.id} {data.origin}
-
-            </div>
-          );
-        })
-      ) : (
-        <div>No Data Yet</div>
-      )}
-    </Wrapper>
+    <div>
+      <Wrapper
+        shouldHover={false}
+        styles={{
+          width: '51vw',
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          overflowY: 'scroll',
+          height: '70vh',
+        }}
+      >
+        {jobCreationData.length > 1 ? (
+          jobCreationData.map((data: IJobCreationData) => {
+            {console.log("execute");
+            }
+            return (
+              <div key={data.id} className="data-list__container">
+                <ListBox key={data.id} job={data} />
+              </div>
+            );
+          })
+        ) : (
+          <div>No Data Yet</div>
+        )}
+      </Wrapper>
+    </div>
   );
 }
 
@@ -33,3 +46,5 @@ const WrapperStyles = {
   height: '55vh',
   overflowY: 'auto',
 };
+
+export default DataPicker;
