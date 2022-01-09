@@ -22,13 +22,13 @@ const ListBox: FC<IProps> = ({ job }) => {
   );
 
   return (
-    <div>
+    <>
       {jobState.chosenJobCreationData.filter(entry => entry.id === job.id).length ? (
         <StyledListItemActive
             onClick={() => dispatch(removeFromChosenJobData(job))}
         >
           <h3>
-            #{job.id} {job.origin}
+            From {job.origin}
           </h3>
           <p>
             Uploaded by{job.uploadedBy} at {job.uploadDate.toLocaleDateString()}
@@ -42,7 +42,7 @@ const ListBox: FC<IProps> = ({ job }) => {
           onClick={() => dispatch(choseJobData(job))}
         >
           <h3>
-            #{job.id} {job.origin}
+            From {job.origin}
           </h3>
           <p>
             Uploaded by{job.uploadedBy} at {job.uploadDate.toLocaleDateString()}
@@ -52,7 +52,7 @@ const ListBox: FC<IProps> = ({ job }) => {
           </p>
         </StyledListItem>
       )}
-    </div>
+    </>
   );
 };
 
@@ -61,25 +61,32 @@ const StyledListItem = styled('div')(({ theme }) => ({
   borderRadius: '0.5rem',
   padding: '1rem',
   margin: '1rem',
-  width: '15vw',
-  height: '10vw',
+  width: '25%',
+  // height: 'fit-content',
   transition: 'all 0.3s ease',
   '&:hover': {
     border: `3px solid ${theme.palette.primary.main}`,
     backgroundColor: alpha(theme.palette.primary.main, 0.1),
     color: theme.palette.primary.main,
   },
+  
+  // '@media (max-width: 1730px)': {
+  //   width: '53vw',
+  // },
 }));
 
 const StyledListItemActive = styled('div')(({ theme }) => ({
   border: `3px solid ${theme.palette.primary.main}`,
   padding: '1rem',
   margin: '1rem',
-  width: '15vw',
-  height: '10vw',
+  width: '25%',
+  // height: 'fit-content',
   borderRadius: '0.5rem',
   backgroundColor: alpha(theme.palette.primary.main, 0.1),
   color: theme.palette.primary.main,
+  // '@media (max-width: 1730px)': {
+  //   width: '53vw',
+  // },
 }));
 
 export default ListBox;

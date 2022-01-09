@@ -70,10 +70,12 @@ const SummaryChosenJobData: FC<IDataPickerSummaryProps> = ({
         shouldHover={false}
         styles={{
           width: '25vw',
-
           height: '70vh',
           borderRadius: '1rem',
-          OverflowY: 'auto',
+          overflowY: 'auto',
+          '@media (max-height: 731px)': {
+              height: '60vh',
+          }
         }}
       >
         {chosenJobCreationData.length > 0 ? (
@@ -158,6 +160,7 @@ const SummaryChosenJobData: FC<IDataPickerSummaryProps> = ({
             <hr />
             <div style={{
                 marginTop: '2rem',
+                
             }}>
               <PieChart
                 options={{

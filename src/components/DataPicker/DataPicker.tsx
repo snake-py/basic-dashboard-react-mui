@@ -17,10 +17,16 @@ const DataPicker: React.FC<IDataPickerProps> = ({ jobCreationData }) => {
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
-          alignItems: 'center',
+          alignItems: 'stretch',
           overflowY: 'scroll',
           height: '70vh',
           borderRadius: '1rem',
+          '@media (max-height: 731px)': {
+            height: '60vh',
+          },
+          '@media (max-width: 1860px)': {
+            width: '53vw',
+          },
         }}
       >
         {jobCreationData.length > 1 ? (
@@ -29,9 +35,7 @@ const DataPicker: React.FC<IDataPickerProps> = ({ jobCreationData }) => {
               console.log('execute');
             }
             return (
-              <div key={data.id} className="data-list__container">
                 <ListBox key={data.id} job={data} />
-              </div>
             );
           })
         ) : (
