@@ -17,7 +17,7 @@ const Upload: FC = () => {
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(
       AppActionCreators.addToast({
-        id: '1',
+        id: Math.random().toString(),
         message: 'Uploading...',
         type: ToastType.INFO,
         // duration: null,
