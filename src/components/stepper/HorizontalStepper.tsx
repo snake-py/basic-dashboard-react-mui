@@ -9,7 +9,6 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { bindActionCreators } from 'redux';
 import { useTheme } from '@mui/material';
 import { styled } from '@mui/system';
 
@@ -23,10 +22,9 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
   const [skipped, setSkipped] = React.useState(new Set());
   const dispatch = useDispatch();
   const theme = useTheme();
-  const { createJobStepper } = bindActionCreators(JobActionCreators, dispatch);
 
   useEffect(() => {
-    dispatch(createJobStepper(activeStep));
+    dispatch(JobActionCreators.createJobStepper(activeStep));
   }, [activeStep]);
 
   const handleNext = () => {

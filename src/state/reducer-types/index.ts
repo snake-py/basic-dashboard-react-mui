@@ -1,7 +1,22 @@
+export enum ToastType {
+  SUCCESS = 'success',
+  ERROR = 'error',
+  WARNING = 'warning',
+  INFO = 'info',
+}
+
+export interface IToast {
+  id: string;
+  message: string;
+  type: ToastType;
+  duration?: number;
+}
+
 // App interfaces
 export interface IAppState {
   ready: boolean;
   darkMode: boolean;
+  toasts: IToast[];
 }
 
 // Job interfaces

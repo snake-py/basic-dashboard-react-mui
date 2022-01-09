@@ -3,7 +3,6 @@ import { IJobCreationData } from '@state/reducer-types';
 import React, { FC, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from '@state';
-import { bindActionCreators } from 'redux';
 import { styled } from '@mui/system';
 import { Input, Box, alpha } from '@mui/material';
 
@@ -13,19 +12,12 @@ interface IProps {
 const ListBox: FC<IProps> = ({ job }) => {
   const dispatch = useDispatch();
   const jobState = useSelector((state: State) => state.job);
-  const [selected, setSelected] = useState(
-    jobState.chosenJobCreationData.includes(job)
-  );
-  const { choseJobData, removeFromChosenJobData } = bindActionCreators(
-    JobActionCreators,
-    dispatch
-  );
 
   return (
     <>
       {jobState.chosenJobCreationData.filter(entry => entry.id === job.id).length ? (
         <StyledListItemActive
-            onClick={() => dispatch(removeFromChosenJobData(job))}
+            onClick={() => dispatch(JobActionCreators.removeFromChosenJobData(job))}
         >
           <h3>
             From {job.origin}
@@ -39,7 +31,7 @@ const ListBox: FC<IProps> = ({ job }) => {
         </StyledListItemActive>
       ) : (
         <StyledListItem
-          onClick={() => dispatch(choseJobData(job))}
+          onClick={() => dispatch(JobActionCreators.choseJobData(job))}
         >
           <h3>
             From {job.origin}

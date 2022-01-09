@@ -1,6 +1,8 @@
 export enum AppActionTypes {
   SWITCH_THEME = 'SWITCH_THEME',
   APP_READY = 'APP_READY',
+  ADD_TOAST = 'ADD_TOAST',
+  REMOVE_TOAST = 'REMOVE_TOAST',
 }
 
 export enum JobActionTypes {
