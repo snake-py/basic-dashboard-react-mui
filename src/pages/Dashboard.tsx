@@ -56,7 +56,7 @@ export default function Dashboard() {
                     severity={toast.type}
                     sx={{ width: '100%' }}
                   >
-                    This is a success message!
+                    {toast.message}
                   </Alert>
                 </Snackbar>
               );
