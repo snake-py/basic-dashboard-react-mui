@@ -60,6 +60,7 @@ const Upload: FC = () => {
     };
     if (event.target.files) {
       if (event.target.files[0]) {
+        //@ts-ignore
         setFile(event.target.files[0]);
         reader.readAsText(event.target.files[0]);
       }
@@ -89,11 +90,11 @@ const Upload: FC = () => {
     data.append('country', country);
     data.append('city', city);
     data.append('user', user);
-    data.append('origin', origin);    
+    data.append('origin', origin);
     axios
-      .post('http://127.0.0.1:8000/api/csv/', 
-        data,
-        {headers: { 'Content-Type': 'multipart/form-data' }})
+      .post('http://127.0.0.1:8000/api/csv/', data, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
       .then((res) => {
         console.log(res);
       });

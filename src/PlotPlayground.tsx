@@ -284,6 +284,7 @@ export default function PlotPlayground() {
       </Wrapper>
       <Wrapper shouldHover={false}>
         <h1>Simple PieChart</h1>
+        {/* @ts-ignore */}
         <PieChart
           chartId="pieChart"
           data={data_pie_chart}

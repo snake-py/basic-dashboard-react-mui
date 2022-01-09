@@ -1,23 +1,14 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import { useTheme } from '@emotion/react';
+import { useTheme } from '@mui/system';
 
-interface IProps {
-  data: any;
-  options: any;
-  chartId: string;
-}
-
-
-const PieChartSummaryChosenJobData: FC<IProps> = ({ data, chartId, options }) => {
-  console.log(data);
-  
+export default function PieChart({ data, chartId, options }) {
   const pieChart = useRef(null);
   const { chartHeight, chartWidth, chartMargin } = options;
   const theme = useTheme();
   const radius = Math.min(chartWidth, chartHeight) / 2 - chartMargin;
 
-  const color = d3.scaleOrdinal().range(d3.schemeSet2);
+  const color = d3.scaleOrdinal().range(theme.palette.plotColors);
 
   const pie = d3.pie().value(function (d) {
     return d[1];
@@ -34,7 +25,7 @@ const PieChartSummaryChosenJobData: FC<IProps> = ({ data, chartId, options }) =>
       .attr('width', chartWidth - chartMargin - chartMargin)
       .attr('height', chartHeight - chartMargin - chartMargin)
       .attr('viewBox', `0 0 ${chartWidth} ${chartHeight}`)
-      .classed("svg-content-responsive", true)
+      .classed('svg-content-responsive', true)
 
       .append('g')
       .attr(
@@ -48,20 +39,19 @@ const PieChartSummaryChosenJobData: FC<IProps> = ({ data, chartId, options }) =>
       .join('path')
       .attr('d', arcGenerator)
       .attr('fill', function (d) {
-        return color(d.data[0]);
+        return color(d.data);
       })
-      .attr('stroke', 'black')
+      .attr('stroke', function(d){
+        return color(d.data);
+      })
       .style('stroke-width', '2px')
       .attr('fill-opacity', 0.3)
-      .style('transition', '0.5s')
+      .style('transition', '0.2s')
       .on('mouseover', function (e, d, i) {
         d3.select(e.srcElement).attr('fill-opacity', 0.8);
-        // d3.select(e.srcElement).attr('transform', 'scale(1.1)');
       })
       .on('mouseout', function (e, d) {
         d3.select(e.srcElement).attr('fill-opacity', 0.3);
-        // d3.select(e.srcElement).attr('transform', 'scale(1)');
-        // d3.select(e.srcElement).selectAll('text')
       });
 
     // Now add the annotation. Use the centroid method to get the best coordinates
@@ -69,6 +59,10 @@ const PieChartSummaryChosenJobData: FC<IProps> = ({ data, chartId, options }) =>
       .selectAll('mySlices')
       .data(data_ready)
       .join('text')
+      .attr('fill', theme.palette.text.primary)
+      .style('font-size', '30px')
+      .attr('fill-opacity', 1)
+      .style('font-weight', 'bold')
       .text(function (d) {
         return d.data[0];
       })
@@ -76,11 +70,7 @@ const PieChartSummaryChosenJobData: FC<IProps> = ({ data, chartId, options }) =>
         return `translate(${arcGenerator.centroid(d)})`;
       })
       .style('text-anchor', 'middle')
-      .style('font-size', 17)
       .style('pointer-events', 'none');
-
   });
   return <div ref={pieChart}></div>;
 }
-
-export default PieChartSummaryChosenJobData;

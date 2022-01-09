@@ -2,6 +2,7 @@ import { IJobCreationData } from '@state/reducer-types';
 import faker from 'faker';
 import { v4 as uuidv4 } from 'uuid';
 
+
 const origins = [
   'Disney',
   'Google',
