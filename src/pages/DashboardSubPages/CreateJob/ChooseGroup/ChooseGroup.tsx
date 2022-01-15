@@ -15,9 +15,12 @@ interface IProps {
 
 const ChooseGroup: FC<IProps> = ({ jobGroups, chosenJobGroups, clickHandler }) => {
   return (
-    <div>
+    <div style={{
+      width: '100%',
+    }}>
       <h1>Choose Group</h1>
       <BarChart
+      yAxisLabel='Total Review'
         chartId="groupBarChart"
         data={jobGroups.map((group) => {
           return { name: group.group, value: group.reviewCount };
@@ -28,7 +31,7 @@ const ChooseGroup: FC<IProps> = ({ jobGroups, chosenJobGroups, clickHandler }) =
         clickHandler={clickHandler}
         styles={{
           svgStyles: {
-            width: '50vw',
+            width: '100%',
             height: '50vh',
           },
           xAxisStyles: {

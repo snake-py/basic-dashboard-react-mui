@@ -22,6 +22,8 @@ interface IPropsBarChart {
       left: number;
     };
   };
+  yAxisLabel?: string;
+  xAxisLabel?: string;
   styles?: {
     svgStyles?: any;
     xAxisStyles?: any;
@@ -44,6 +46,8 @@ const BarChart: FC<IPropsBarChart> = ({
   styles,
   clickHandler,
   chosenData,
+  yAxisLabel,
+  xAxisLabel,
 }) => {
   const barChartRef = useRef(null);
   const forceUpdate = useForceUpdate();
@@ -157,6 +161,18 @@ const BarChart: FC<IPropsBarChart> = ({
     if (styles) {
       svg.append('g').attr('class', classes.xAxis).call(xAxis);
       svg.append('g').attr('class', classes.yAxis).call(yAxis);
+    }
+    if (yAxisLabel) {
+      svg
+        .append('text')
+        .attr('x', 0 - chartHeight / 2)
+        .attr('y', 0)
+        .style('fill', theme.palette.text.primary)
+        .attr('font-size', '.8rem')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '-0.5em')
+        .attr('transform', 'rotate(-90)')
+        .text(yAxisLabel);
     }
   });
   return <div className="svg-container" ref={barChartRef}></div>;
