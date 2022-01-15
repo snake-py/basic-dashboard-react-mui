@@ -52,6 +52,8 @@ const initialState: IJobState = {
   smallBarChartCurrentValue: 0,
   jobCreationData: [],
   chosenJobCreationData: [],
+  jobGroups: [],
+  chosenJobGroups: [],
 };
 
 export function jobReducer(
@@ -68,8 +70,10 @@ export function jobReducer(
     case JobActionTypes.CHOSE_JOB_DATA:
       return {
         ...state,
-        chosenJobCreationData: [... new Set(state.chosenJobCreationData).add(action.payload)],
-      }
+        chosenJobCreationData: [
+          ...new Set(state.chosenJobCreationData).add(action.payload),
+        ],
+      };
     case JobActionTypes.REMOVE_FROM_CHOSEN_JOB_DATA:
       return {
         ...state,
@@ -87,6 +91,25 @@ export function jobReducer(
         ...state,
         jobCreationData: [...action.payload],
       };
+    case JobActionTypes.LOAD_JOB_GROUPS:
+      return {
+        ...state,
+        jobGroups: [...action.payload],
+      };
+    case JobActionTypes.CHOSE_JOB_GROUP:
+      return {
+        ...state,
+        chosenJobGroups: [
+          ...new Set(state.chosenJobGroups).add(action.payload),
+        ],
+      };
+      case JobActionTypes.REMOVE_FROM_CHOSEN_JOB_GROUP:
+        return {
+          ...state,
+          chosenJobGroups: state.chosenJobGroups.filter((data) => {
+            return data.group !== action.payload.group;
+          }),
+        };
     default:
       return state;
   }

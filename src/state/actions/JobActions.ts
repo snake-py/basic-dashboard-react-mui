@@ -1,4 +1,4 @@
-import { IJobCreationData } from '@state/reducer-types';
+import { IJobCreationData, IJobGroup } from '@state/reducer-types';
 import { JobActionTypes } from '../action-types';
 
 interface CreateJobStepper {
@@ -25,9 +25,28 @@ interface RemoveJobData {
   payload: IJobCreationData;
 }
 
+interface LoadJobGroups {
+  type: JobActionTypes.LOAD_JOB_GROUPS;
+  payload: IJobGroup[];
+}
+
+interface ChooseJobGroup {
+  type: JobActionTypes.CHOSE_JOB_GROUP;
+  payload: IJobGroup;
+}
+
+interface RemoveJobGroup {
+  type: JobActionTypes.REMOVE_FROM_CHOSEN_JOB_GROUP;
+  payload: IJobGroup;
+}
+
 export type Actions =
   | CreateJobStepper
   | SetCurrentSmallBarChartValue
   | LoadJobCreateData
   | ChoseJobData
-  | RemoveJobData;
+  | RemoveJobData
+  | LoadJobGroups
+  | ChooseJobGroup
+  | RemoveJobGroup;
+

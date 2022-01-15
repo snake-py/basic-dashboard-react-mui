@@ -1,9 +1,9 @@
 import apiService from '@service/APIService';
 import { JobActionTypes } from '@state/action-types';
 import { JobActions } from '@state/actions';
-import { IJobCreationData } from '@state/reducer-types';
+import { IJobCreationData, IJobGroup } from '@state/reducer-types';
 import { Dispatch } from 'react';
-// import store from '/store';
+import { store } from '@state';
 
 export const createJobStepper =
   (activeJobCreateStep: number) => (dispatch: Dispatch<JobActions>) => {
@@ -40,13 +40,39 @@ export const choseJobData =
     console.log('choseJobData', data);
     return dispatch({
       type: JobActionTypes.CHOSE_JOB_DATA,
-      payload: {...data},
+      payload: { ...data },
     });
   };
-  export const removeFromChosenJobData =
+export const removeFromChosenJobData =
   (data: IJobCreationData) => (dispatch: Dispatch<JobActions>) => {
     return dispatch({
       type: JobActionTypes.REMOVE_FROM_CHOSEN_JOB_DATA,
       payload: data,
+    });
+  };
+
+export const loadJobGroups = () => async (dispatch: Dispatch<JobActions>) => {
+  console.log('loadJobGroups');
+  return await apiService.getJobGroups().then((data: Array<IJobGroup>) => {
+    return dispatch({
+      type: JobActionTypes.LOAD_JOB_GROUPS,
+      payload: data,
+    });
+  });
+};
+
+export const chooseJobGroup =
+  (group: IJobGroup) => (dispatch: Dispatch<JobActions>) => {
+    return dispatch({
+      type: JobActionTypes.CHOSE_JOB_GROUP,
+      payload: { ...group },
+    });
+  };
+
+export const removeJobGroup =
+  (group: IJobGroup) => (dispatch: Dispatch<JobActions>) => {
+    return dispatch({
+      type: JobActionTypes.REMOVE_FROM_CHOSEN_JOB_GROUP,
+      payload: { ...group },
     });
   };

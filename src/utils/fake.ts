@@ -1,7 +1,6 @@
-import { IJobCreationData } from '@state/reducer-types';
+import { IJobCreationData, IJobGroup } from '@state/reducer-types';
 import faker from 'faker';
 import { v4 as uuidv4 } from 'uuid';
-
 
 const origins = [
   'Disney',
@@ -24,6 +23,18 @@ export const fakeCreationDate = (entries: number): IJobCreationData[] => {
       totalReviews: faker.datatype.number({ min: 1, max: 1000000000 }),
       uploadDate: faker.date.recent(),
       uploadedBy: faker.name.firstName(),
+    });
+  }
+  return data;
+};
+
+export const fakeGroupData = (): IJobGroup[] => {
+  const data: IJobGroup[] = [];
+  for (let i = 0; i < 5; i++) {
+    data.push({
+      group: origins[i],
+      reviewCount: faker.datatype.number({ min: 1, max: 100000 }),
+      sourceType: 'csv',
     });
   }
   return data;

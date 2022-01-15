@@ -47,11 +47,22 @@ export interface IJobCreationData {
   uploadedBy: string;
 }
 
+export interface IJobGroup {
+  reviewCount : number;
+  sourceType: string;
+  group: string;
+}
 
 export interface IJobState {
   jobs: IJob[];
-  activeJobCreateStep: 0 | 1 | 2;
+  activeJobCreateStep: 0 | 1 | 2 | 3 ;
   smallBarChartCurrentValue: number;
-  jobCreationData: Array<IJobCreationData>;
+  // Funnel page 1
+  jobGroups: IJobGroup[];
+  chosenJobGroups: IJobGroup[];
+  // Funnel page 2
+  jobCreationData: IJobCreationData[];
   chosenJobCreationData: IJobCreationData[];
+  
+
 }
