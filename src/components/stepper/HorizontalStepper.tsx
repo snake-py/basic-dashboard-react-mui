@@ -47,7 +47,7 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
           return (
             <Step key={label}>
               <StepLabel>
-                <span style={{ color: theme.palette.text.primary }}>
+                <span style={{ color: theme.palette.text.primary, fontSize: '1.5rem' }}>
                   {label}
                 </span>
               </StepLabel>

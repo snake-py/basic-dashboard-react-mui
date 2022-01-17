@@ -1,38 +1,104 @@
+import React from 'react';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from 'react-router-dom';
 import { styled } from '@mui/system';
+import { Button, Drawer, useTheme } from '@mui/material';
+import { useEffect } from 'react';
+import { useViewport } from '@hooks';
 
-const SideBar = styled('aside')(({ theme }) => ({
-  backgroundImage: `linear-gradient(to bottom, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
-}));
+const SideNavigation = () => {
+  const { width } = useViewport();
+  const breakpoint = 1120;
+  return width < breakpoint ? (
+    <MobileSideNavigation />
+  ) : (
+    <DesktopSideNavigation />
+  );
+};
 
-const StyledNavigation = styled('nav')(({ theme }) => ({
-  color: theme.palette.text.secondary,
-}));
+const MobileSideNavigation = () => {
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
 
-const ListItem = styled('li')(({ theme }) => ({}));
+  const theme = useTheme();
 
-const CustomHr = styled('hr')(({ theme }) => ({
-  border: `1px solid ${theme.palette.divider.secondary}`,
-}));
+  type Anchor = 'top' | 'left' | 'bottom' | 'right';
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
 
-const StyledLink = styled(Link)(({ theme }) => ({
-  display: 'block',
-  padding: '0.5rem 1rem',
-  textDecoration: 'none',
-  color: theme.palette.text.secondary,
-  transition: 'all 0.1s ease-in-out',
-  textAlign: 'left',
-  '&:hover': {
-    backgroundColor: theme.palette.primary.light,
-    color: theme.palette.text.secondary,
-    fontWeight: 'bold',
-  },
-}));
+      setState({ ...state, [anchor]: open });
+    };
+  const anchor = 'left';
+  return (
+    <>
+      <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+      <Drawer
+        anchor={anchor}
+        open={state[anchor]}
+        onClose={toggleDrawer(anchor, false)}
+        PaperProps={{
+          style: {
+            backgroundImage: `linear-gradient(to bottom, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+          },
+        }}
+      >
+        <NavList withTopHR={false} />
+      </Drawer>
+    </>
+  );
+};
 
-export default function SideNavigation() {
+const DesktopSideNavigation = () => {
+  const SideBar = styled('aside')(({ theme }) => ({
+    backgroundImage: `linear-gradient(to bottom, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+  }));
   return (
     <SideBar className="sideNavigation">
+      <NavList />
+    </SideBar>
+  );
+};
+
+const NavList = ({ withTopHR = true }) => {
+  const theme = useTheme();
+
+  const StyledNavigation = styled('nav')(({ theme }) => ({
+    color: theme.palette.text.secondary,
+  }));
+
+  const ListItem = styled('li')(({ theme }) => ({}));
+
+  const CustomHr = styled('hr')(({}) => ({
+    border: `1px solid ${theme.palette.text.secondary}`,
+  }));
+
+  const StyledLink = styled(Link)(({ theme }) => ({
+    display: 'block',
+    padding: '0.5rem 1rem',
+    textDecoration: 'none',
+    color: theme.palette.text.secondary,
+    transition: 'all 0.1s ease-in-out',
+    textAlign: 'left',
+    '&:hover': {
+      backgroundColor: theme.palette.primary.light,
+      color: theme.palette.text.secondary,
+      fontWeight: 'bold',
+    },
+  }));
+  return (
+    <>
       <Link to="/">
         <HomeIcon
           sx={{
@@ -41,7 +107,7 @@ export default function SideNavigation() {
           }}
         />
       </Link>
-      <CustomHr />
+      {withTopHR && <CustomHr />}
       <StyledNavigation className="sideNavigation__nav">
         <ul className="sideNavigation__list">
           <ListItem>
@@ -64,6 +130,8 @@ export default function SideNavigation() {
           </ListItem>
         </ul>
       </StyledNavigation>
-    </SideBar>
+    </>
   );
-}
+};
+
+export default SideNavigation;
