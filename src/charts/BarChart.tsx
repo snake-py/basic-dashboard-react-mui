@@ -67,6 +67,9 @@ const BarChart: FC<IPropsBarChart> = ({
         yAxis: {
           ...styles.xAxisStyles,
         },
+        bar: {
+            cursor: 'pointer',
+        },
       })
     );
 
@@ -121,6 +124,7 @@ const BarChart: FC<IPropsBarChart> = ({
       .data(data)
       .join('rect')
       .attr('class', 'bar-chart__bar')
+      .attr('class', classes.bar)
       //@ts-ignore
       .attr('x', (d, i) => x(i))
       .attr('y', (d) => y(d.value))
