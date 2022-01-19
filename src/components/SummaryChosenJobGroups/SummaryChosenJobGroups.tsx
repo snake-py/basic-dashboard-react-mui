@@ -6,7 +6,7 @@ import {
   ListItemText,
   useTheme,
 } from '@mui/material';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles, styled } from '@material-ui/core/styles';
 import React, { FC, useState, useEffect } from 'react';
 import FolderIcon from '@mui/icons-material/Folder';
 import DateRangeIcon from '@mui/icons-material/DateRange';
@@ -36,6 +36,18 @@ const SummaryChosenJobGroups: FC<IProps> = ({ chosenJobGroups }) => {
   );
   const classes = useStyles();
 
+  const StyledDiv = styled('div')(() => ({
+    height: 'fit-content',
+    display: 'flex',
+    justifyContent: 'space-around',
+    fontSize: '1.5rem',
+    
+  }));
+  const StyledDivNoContent = styled('div')(() => ({
+    textAlign: 'center',
+    marginTop: '4vh',
+  }));
+
   const sumOfReviews = () => {
     return Object.values(chosenJobGroups).reduce(
       (sum, curr) => sum + curr.reviewCount,
@@ -50,35 +62,19 @@ const SummaryChosenJobGroups: FC<IProps> = ({ chosenJobGroups }) => {
           width: '70vw',
           height: '20vh',
           borderRadius: '1rem',
-          overflowY: 'auto',
-          '@media (max-height: 731px)': {
-            height: '60vh',
-          },
         }}
       >
         {chosenJobGroups.length > 0 ? (
           <>
-            <div
-              style={{
-                height: 'fit-content',
-                display: 'flex',
-                justifyContent: 'space-around',
-                fontSize: '1.5rem',
-              }}
-            >
+            <StyledDiv>
               <h2>Total Reviews: {sumOfReviews()}</h2>
-            </div>
+            </StyledDiv>
           </>
         ) : (
-          <div
-            style={{
-              textAlign: 'center',
-              marginTop: '5vh',
-            }}
-          >
+          <StyledDivNoContent>
             <h2>No Data Chosen</h2>
             <p>Chose Date on the left hand sight</p>
-          </div>
+          </StyledDivNoContent>
         )}
       </Wrapper>
     </div>

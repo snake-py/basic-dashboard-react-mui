@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useTheme } from '@mui/material';
 import { styled } from '@mui/system';
+import { useViewport } from '@hooks';
 
 interface IProp {
   children: React.ReactNode;
@@ -40,6 +41,31 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
     setActiveStep(0);
   };
 
+
+  const StepperFooter = styled('div')(({ theme }) => ({
+    position: 'absolute',
+    bottom: 20,
+    width: '83vw',
+    '@media (max-width: 1119px)': {
+      width: '94vw',
+    },
+    '@media (max-width: 637px)': {
+      position: 'unset',
+      display: 'block',
+    },
+  }));
+  
+  const StepperLabel = styled('span')(({ theme }) => ({
+    color: theme.palette.text.primary,
+    fontSize: '1.5rem',
+    '@media (max-width: 886px)': {
+      fontSize: '1rem',
+    },
+  }));
+  
+  const { width } = useViewport();
+  const breakpoint = 886;
+
   return (
     <Box sx={{ width: '100%', height: '80%' }}>
       <Stepper activeStep={activeStep}>
@@ -47,9 +73,9 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
           return (
             <Step key={label}>
               <StepLabel>
-                <span style={{ color: theme.palette.text.primary, fontSize: '1.5rem' }}>
+                <StepperLabel>
                   {label}
-                </span>
+                </StepperLabel>
               </StepLabel>
             </Step>
           );
@@ -90,10 +116,6 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
   );
 };
 
-const StepperFooter = styled('div')(({ theme }) => ({
-  position: 'absolute',
-  bottom: 20,
-  width: '83vw',
-}));
+
 
 export default HorizontalStepper;
