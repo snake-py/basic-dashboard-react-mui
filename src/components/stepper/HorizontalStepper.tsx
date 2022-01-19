@@ -41,7 +41,6 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
     setActiveStep(0);
   };
 
-
   const StepperFooter = styled('div')(({ theme }) => ({
     position: 'absolute',
     bottom: 20,
@@ -54,32 +53,45 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
       display: 'block',
     },
   }));
-  
+
   const StepperLabel = styled('span')(({ theme }) => ({
     color: theme.palette.text.primary,
     fontSize: '1.5rem',
     '@media (max-width: 886px)': {
       fontSize: '1rem',
     },
+    '@media (max-width: 682px)': {
+      fontSize: '.8rem',
+    },
   }));
-  
+
   const { width } = useViewport();
-  const breakpoint = 886;
+  const breakpoint = 495;
 
   return (
     <Box sx={{ width: '100%', height: '80%' }}>
       <Stepper activeStep={activeStep}>
-        {steps.map((label, index) => {
-          return (
-            <Step key={label}>
-              <StepLabel>
-                <StepperLabel>
-                  {label}
-                </StepperLabel>
-              </StepLabel>
-            </Step>
-          );
-        })}
+        {width < breakpoint
+          ? steps.map((label, index) => {
+              if (activeStep === index) {
+                return (
+                  <Step key={label}>
+                    <StepLabel>
+                      <StepperLabel>{label}</StepperLabel>
+                    </StepLabel>
+                  </Step>
+                );
+              }
+            })
+          : steps.map((label, index) => {
+              return (
+                <Step key={label}>
+                  <StepLabel>
+                    <StepperLabel>{label}</StepperLabel>
+                  </StepLabel>
+                </Step>
+              );
+            })}
       </Stepper>
       {children}
       <StepperFooter>
@@ -115,7 +127,5 @@ const HorizontalStepper: React.FC<IProp> = ({ children, steps }) => {
     </Box>
   );
 };
-
-
 
 export default HorizontalStepper;
