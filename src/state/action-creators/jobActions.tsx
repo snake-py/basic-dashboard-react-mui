@@ -53,10 +53,12 @@ export const removeFromChosenJobData =
 
 export const loadJobGroups = () => async (dispatch: Dispatch<JobActions>) => {
   console.log('loadJobGroups');
-  return await apiService.getJobGroups().then((data: Array<IJobGroup>) => {
+  return await apiService.getJobGroups().then((data: {data: {groups:Array<IJobGroup>}}) => {
+    console.log('loadJobGroups', data);
+    
     return dispatch({
       type: JobActionTypes.LOAD_JOB_GROUPS,
-      payload: data,
+      payload: data.data.groups,
     });
   });
 };

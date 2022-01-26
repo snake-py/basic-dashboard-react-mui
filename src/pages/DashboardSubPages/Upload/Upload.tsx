@@ -92,7 +92,7 @@ const Upload: FC = () => {
     data.append('user', user);
     data.append('origin', origin);
     axios
-      .post('http://127.0.0.1:8000/api/csv/', data, {
+      .post('http://127.0.0.1:8000/api/preprocessor/csv/', data, {
         headers: { 'Content-Type': 'multipart/form-data' },
       })
       .then((res) => {

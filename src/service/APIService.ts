@@ -12,7 +12,6 @@ class APIService implements IAPIService {
       baseURL: process.env.API_GATEWAY_URL,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
       },
       //   withCredentials: true,
     });
@@ -33,8 +32,7 @@ class APIService implements IAPIService {
   }
 
   public async getJobGroups(): Promise<any | IJobGroup[]> {
-    return fakeGroupData();
-    // return this.get('https://us-central1-easy-as-pie-hackathon.cloudfunctions.net/get_sources');
+    return this.get('http://127.0.0.1:8000/api/csv/list/');
   }
 }
 
